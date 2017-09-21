@@ -17,12 +17,12 @@ user_data = []
   user_data << {
     first_name: first,
     last_name: last,
+    email: FFaker::Internet.email,
     current_city: FFaker::Address.city,
     password: "1234"
   }
 end
 users = User.create(user_data)
-
 i = 0
 post_data = []
 3.times do
@@ -33,4 +33,8 @@ post_data = []
   }
   i = i +1
 end
-posts = Post.create(post_data)
+random_post = Post.create(post_data)
+
+users[0].posts << random_post[0]
+users[1].posts << random_post[1]
+users[2].posts << random_post[2]
