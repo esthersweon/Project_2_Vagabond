@@ -10,14 +10,25 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
- */
+  */
+ = require_tree .
+ = require_self
+
+.nav-buttn{
+  float: right;
+
+ }
+ img{
+   height: 600px;
+   width: 100%;
+ }
+
  .footer{
+   bottom: 0;
+   width: 100%;
    font-family: ;
-   background-color: black;
+   background-color: #007bff;
    color: white;
-   margin-top: 20px;
    text-align: center;
    padding: 20px;
  }

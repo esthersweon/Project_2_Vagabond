@@ -1,4 +1,4 @@
-class CityController < ApplicationController
+class CitiesController < ApplicationController
   # list all of the cities
   def index
     # if @current_user == nil
@@ -9,6 +9,6 @@ class CityController < ApplicationController
 
   # show specific city and user/posts associate with it
   def show
-
+    @city = City.find(params[:city_id])
   end
 end

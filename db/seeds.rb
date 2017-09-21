@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Post.destroy_all
 User.destroy_all
-
+City.destroy_all
 
 
 user_data = []
@@ -33,6 +33,10 @@ post_data = []
   }
   i = i +1
 end
+city_data = []
+ City.create(name: "San Francisco", image: "sf.jpg")
+ City.create(name: "New York", image: "ny.jpg")
+ City.create(name: "Atlanta", image: "atlanta.jpg")
 random_post = Post.create(post_data)
 
 users[0].posts << random_post[0]
