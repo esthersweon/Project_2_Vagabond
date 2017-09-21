@@ -20,9 +20,9 @@ class UserController < ApplicationController
 
   # Update attributes from form submit
   def update
-    user = User.find_by_id(params[:user_id])
-    user.update_attributes(user_params)
-    redirect_to user_path(user)
+    @user = User.find_by_id(session[:user_id])
+    @user.update_attributes(user_params)
+    redirect_to user_path(@user)
   end
 
   # show page for showing individual profile with given id

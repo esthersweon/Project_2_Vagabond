@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   get "/user/:user_id/edit", to: "user#edit", as: "edit_user"
   patch "/user/:user_id", to: "user#update"
   #Sessions
-  get '/login', to: 'session#new'
-  get '/logout', to: 'session#destroy'
+  get '/login', to: 'session#create'
+  get '/logout', to: 'session#logout'
   post '/session', to: 'session#create'
 
   # Posts routes
@@ -24,5 +24,5 @@ Rails.application.routes.draw do
   # get '/cities/:id/show', to: 'cities#show', as: "city"
   # get "/libraries/:id", to: "libraries#show", as: 'library'
 
-  get '/cities', to: "cities#index", as: "cities"
+  get '/cities', to: "city#index", as: "cities"
 end

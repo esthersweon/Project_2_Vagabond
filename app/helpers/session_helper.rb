@@ -13,6 +13,7 @@ module SessionHelper
 
   def logout
     @current_user = session[:user_id] = nil
+    redirect_to cities_path
   end
 
   def has_login
