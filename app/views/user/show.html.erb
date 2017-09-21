@@ -2,8 +2,18 @@
 <p> Hello <%= @user.first_name + " " + @user.last_name %> </p>
 <p>Date Joined: <%= @user.created_at %></p>
 <p>Current City: <%= @user.current_city %></p>
-
 </div>
+
+<h2> Your Posts </h2>
+<ul>
+<% @user.posts.each do |post| %>
+  <li>
+    <h4><%= link_to post.title, url: "#" %> </h4>
+  </li>
+<% end %>
+</ul>
+
+<!-- Edit Profile Modal -->
 
 <div class="container-modal">
 <!-- Add Playlist Modal -->
@@ -41,4 +51,5 @@
    </div>
  </div>
 </div>
+
 </div>
