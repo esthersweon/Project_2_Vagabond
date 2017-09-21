@@ -1,8 +1,6 @@
 class UserController < ApplicationController
 
-  def new
-    @user = User.new
-  end
+
 
   # create user acc after user submit their info to form
   def create

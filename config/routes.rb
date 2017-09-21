@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   # get '/login', to: 'session#new'
   # get '/logout', to: 'session#destroy'
   # post '/session', to: 'session#create'
-  
+
   # Posts routes
 
   # index -> Homepage showing list of cities to select
@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   # get '/cities/:id/show', to: 'cities#show', as: "city"
   # get "/libraries/:id", to: "libraries#show", as: 'library'
 
+  get '/cities', to: "cities#index", as: "cities"
 end
