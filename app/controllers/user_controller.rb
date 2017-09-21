@@ -1,21 +1,22 @@
 class UserController < ApplicationController
 
-  before_action :has_login, only: [:show, :update, :edit]
+  # before_action :has_login, only: [:show, :update, :edit]
 
   # create user acc after user submit their info to form
   def create
     @user = User.create(user_params)
     if @user.save
-      redirect_to @user
+      login(@user)
+      redirect_to user_path(@user)
     else
       redirect_to new_user_path
     end
   end
 
   # Option to edit their user profile
-  def edit
-    @user = User.find_by_id(params[:user_id])
-  end
+  # def edit
+  #   @user = User.find_by_id(params[:user_id])
+  # end
 
   # Update attributes from form submit
   def update
@@ -32,7 +33,7 @@ class UserController < ApplicationController
 
   private
   def user_params
-    p = params.require(:user).permit(:first_name, :last_name, :current_city, :password)
+    p = params.require(:user).permit(:first_name, :last_name, :email, :current_city, :password)
   end
 
 end

@@ -17,6 +17,7 @@ user_data = []
   user_data << {
     first_name: first,
     last_name: last,
+    email: FFaker::Internet.email,
     current_city: FFaker::Address.city,
     password: "1234"
   }

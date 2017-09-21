@@ -4,13 +4,13 @@ Rails.application.routes.draw do
   root to: "city#index"
 
   # new display form html page for creating new profile
-  get "/users/new", to: "users#new", as: "new_user"
+  get "/user/new", to: "user#new", as: "new_user"
   # creating and insert into db
-  post "/users", to: "users#create"
+  post "/user", to: "user#create", as: "create_user"
   # get -> showing individual profile
-  get "/users/:user_id", to: "users#show", as: "user"
-  get "/users/:user_id/edit", to: "user#edit", as: "edit_user"
-  patch "/users/:user_id", to: "user#update"
+  get "/user/:user_id", to: "user#show", as: "user"
+  get "/user/:user_id/edit", to: "user#edit", as: "edit_user"
+  patch "/user/:user_id", to: "user#update"
   #Sessions
   get '/login', to: 'session#new'
   get '/logout', to: 'session#destroy'

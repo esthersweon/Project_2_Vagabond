@@ -15,16 +15,61 @@
   <body>
     <nav class="navbar navbar-inverse bg-primary">
     <!-- Navbar content -->
-      <form class="form-inline">
+
         <h1 class="navbar-brand mb-0">Welcome to Vagabond</h1>
-        <button class="btn btn-outline-success" type="button">Sign Up</button>
-        <button class="btn btn-outline-success" type="button">Log In</button>
-      </form>
+
+        <div class="container-modal">
+       <!-- Add Playlist Modal -->
+       <div class="margin-top-20">
+         <button data-toggle="modal" data-target="#sign_up_modal" class="btn btn-primary">Sign Up</button>
+       </div>
+       <div id="sign_up_modal" class="modal fade">
+         <div class="modal-dialog">
+           <div class="modal-content">
+             <%= form_for :user, url: create_user_path, method: "post" do |f| %>
+               <div class="modal-body">
+                 <div class="margin-top-20">
+                   <%= f.text_field :first_name, placeholder: "First Name"%>
+                 </div>
+                 <div class="margin-top-20">
+                   <%= f.text_field :last_name, placeholder: "Last Name"%>
+                 </div>
+                 <div class="margin-top-20">
+                   <%= f.email_field :email, placeholder: "Email"%>
+                 </div>
+                 <div class="margin-top-20">
+                   <%= f.text_field :current_city, placeholder: "Current City"%>
+                 </div>
+                 <div class="margin-top-20">
+                   <%= f.password_field :password, placeholder: "Password"%>
+                 </div>
+               </div>
+
+               <div class="modal-footer">
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                 <%= f.submit "Sign up!" %>
+               </div>
+               <% end %>
+
+           </div>
+         </div>
+       </div>
+     </div>
+     <!-- end of modal -->
+
+
+        <div class="margin-top-20">
+          <button data-toggle="modal" data-target="#login_modal" class="btn btn-primary">Log in</button>
+        </div>
+
     </nav>
     <p>This is your index page, make it work</p>
-    <!-- <%= yield %> -->
+    <%= yield %>
     <div class="footer">
         <h2>&copy;javascriptforlife & Huan Ming Lo & Jonathan Mules</h2>
-      </div>
+    </div>
+
+
+
   </body>
 </html>
