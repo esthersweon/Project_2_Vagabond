@@ -6,9 +6,10 @@
 
 <h2> Your Posts </h2>
 <ul>
-<% @user.posts.each do |post| %>
+<% @user.posts.each do |user_post| %>
   <li>
-    <h4><%= link_to post.title, url: "#" %> </h4>
+
+    <h4><%= link_to user_post.title, post_path(user_post.id) %> </h4>
   </li>
 <% end %>
 </ul>

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   post '/session', to: 'session#create'
 
   # Posts routes
+  get '/post/:post_id/show', to: 'post#show', as: "post"
 
   # index -> Homepage showing list of cities to select
   # get '/cites', to: 'cities#index'
