@@ -9,12 +9,13 @@ Rails.application.routes.draw do
   post "/users", to: "users#create"
   # get -> showing individual profile
   get "/users/:user_id", to: "users#show", as: "user"
-
+  get "/users/:user_id/edit", to: "user#edit", as: "edit_user"
+  patch "/users/:user_id", to: "user#update"
   #Sessions
   # get '/login', to: 'session#new'
   # get '/logout', to: 'session#destroy'
   # post '/session', to: 'session#create'
-
+  
   # Posts routes
 
   # index -> Homepage showing list of cities to select

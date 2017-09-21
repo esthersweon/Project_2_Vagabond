@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Comment.destroy_all
+Post.destroy_all
 User.destroy_all
 
 
@@ -24,13 +24,13 @@ end
 users = User.create(user_data)
 
 i = 0
-comment_data = []
+post_data = []
 3.times do
-  comment_data << {
+  post_data << {
     title: FFaker::CheesyLingo.title,
     content: FFaker::CheesyLingo.sentence,
     author: (users[i].first_name + " " + users[i].last_name)
   }
   i = i +1
 end
-comments = Comment.create(comment_data)
+posts = Post.create(post_data)
