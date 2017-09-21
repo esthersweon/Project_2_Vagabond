@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   post "/users", to: "users#create"
   # get -> showing individual profile
   get "/users/:user_id", to: "users#show", as: "user"
-
+  get "/users/:user_id/edit", to: "user#edit", as: "edit_user"
+  patch "/users/:user_id", to: "user#update"
   #Sessions
   get '/login', to: 'session#new'
   get '/logout', to: 'session#destroy'
@@ -23,4 +24,5 @@ Rails.application.routes.draw do
   # get '/cities/:id/show', to: 'cities#show', as: "city"
   # get "/libraries/:id", to: "libraries#show", as: 'library'
 
+  get '/cities', to: "cities#index", as: "cities"
 end

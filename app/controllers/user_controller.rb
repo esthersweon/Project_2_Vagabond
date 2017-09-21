@@ -1,8 +1,6 @@
 class UserController < ApplicationController
 
-  def new
-    @user = User.new
-  end
+  before_action :has_login, only: [:show, :update, :edit]
 
   # create user acc after user submit their info to form
   def create
@@ -14,14 +12,27 @@ class UserController < ApplicationController
     end
   end
 
+  # Option to edit their user profile
+  def edit
+    @user = User.find_by_id(params[:user_id])
+  end
+
+  # Update attributes from form submit
+  def update
+    user = User.find_by_id(params[:user_id])
+    user.update_attributes(user_params)
+    redirect_to user_path(user)
+  end
+
   # show page for showing individual profile with given id
   def show
-    @user = User.find(params[:user_id])
+    # find and display current user in session
+    @user = User.find(session[:user_id])
   end
 
   private
   def user_params
-    p = params.require(:user).permit(:first_name, :last_name, :password)
+    p = params.require(:user).permit(:first_name, :last_name, :current_city, :password)
   end
 
 end

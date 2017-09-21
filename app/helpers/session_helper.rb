@@ -1,5 +1,6 @@
 module SessionHelper
 
+
   def login(user)
     #not possitive if this should be called on :id or :user_id. It's :user_id in the library app but not sure why. Will look into.
     session[:id] = user.id
@@ -12,6 +13,13 @@ module SessionHelper
 
   def logout
     @current_user = session[:id] = nil
+  end
+
+  def has_login
+    if current_user == nil
+      redirect_to cities_path
+    end
+
   end
 
 end
