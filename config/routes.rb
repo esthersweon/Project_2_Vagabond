@@ -18,10 +18,10 @@ Rails.application.routes.draw do
 
   # Posts routes
   get '/post/:post_id/show', to: 'post#show', as: "post"
+  post '/post/:city_id', to: 'post#create', as:"create_post"
 
   # index -> Homepage showing list of cities to select
   get '/cities', to: "cities#index", as: "cities"
   # show specific city
   get '/cities/:city_id/show', to: 'cities#show', as: "city"
-  get "/libraries/:id", to: "libraries#show", as: 'library'
 end

@@ -1,1 +1,44 @@
+<nav class="navbar navbar-inverse bg-primary">
+  <!-- Navbar content -->
+
+  <h1 class="navbar-brand mb-0">Welcome to Vagabond.com</h1>
+  <h1 class="navbar-brand mb-0"><%= @city.name %></h1>
+  <% if current_user == nil %>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item margin-top-20">
+      <button data-toggle="modal" data-target="#new_post_modal" class="btn btn-primary nav-buttn">New Post</button>
+    </li>
+  </ul>
+  <% end %>
+</nav>
 <%= image_tag(@city.image) %>
+<!-- MODAL -->
+<div class="container-modal">
+  <!-- New Post modal -->
+  <div id="new_post_modal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <h4>New Post</h4>
+        <% @post= Post.new %>
+        <%= form_for @post, url: create_post_path(@city.id), method: "post" do |f| %>
+        <div class="modal-body">
+          <div class="margin-top-20">
+            <%= f.text_field :title, placeholder: "Title"%>
+          </div>
+          <div class="margin-top-20">
+            <%= f.text_area :content %>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= f.submit "Submit Post" %>
+        </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+  <!-- end of sign up modal -->
+</div>
+<!-- end of modal container-->
