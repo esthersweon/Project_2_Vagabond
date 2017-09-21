@@ -11,10 +11,10 @@ Rails.application.routes.draw do
   get "/users/:user_id", to: "users#show", as: "user"
 
   #Sessions
-  # get '/login', to: 'session#new'
-  # get '/logout', to: 'session#destroy'
-  # post '/session', to: 'session#create'
-  
+  get '/login', to: 'session#new'
+  get '/logout', to: 'session#destroy'
+  post '/session', to: 'session#create'
+
   # Posts routes
 
   # index -> Homepage showing list of cities to select
