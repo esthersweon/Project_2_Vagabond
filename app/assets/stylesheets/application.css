@@ -14,10 +14,6 @@
  = require_tree .
  = require_self
 
-.nav-buttn{
-  float: right;
-
- }
  body{
    font-family: 'Great Vibes', cursive;
  }
@@ -27,41 +23,35 @@
   height: 15%;
 
 }
-.navbar-brand{
-  display: inline-block;
-}
-
 .navbar{
   background-color: #FEFFF1;
+  display: inline-flex;
 }
 .btn{
   color: white;
   background-color: #FD18FD;
 }
 a{
-  display: inline;
+  max-width: 85%;
+
 }
-.inline-block{
-  display: inline-block;
+img{
+  height: 600px;
+  width: 100%;
+}
+.icon{
+  height: 20px;
+  width: 20px;
 }
 
- img{
-   height: 600px;
-   width: 100%;
- }
- .icon{
- height: 20px;
- width: 20px;
- }
+.footer{
+  bottom: 0;
+  position: relative;
 
- .footer{
-   bottom: 0;
-   position: relative;
-
-   width: 100%;
-   font-family: ;
-   background-color: #FEFFF1;
-   color: #FD18FD;
-   text-align: center;
-   padding: 20px;
- }
+  width: 100%;
+  font-family: ;
+  background-color: #FEFFF1;
+  color: #FD18FD;
+  text-align: center;
+  padding: 20px;
+}

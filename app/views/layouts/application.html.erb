@@ -18,23 +18,23 @@
   <!-- Navbar top -->
   <nav id="main_nav" class="navbar navbar-inverse">
     <!-- Navbar content -->
-      <%= link_to image_tag('logo.png', class: "logo inline-block"), cities_path %>
+    <a href="/cities"><%= image_tag('logo.png', class: "logo", alt: "Logo") %></a>
     <% if current_user == nil %>
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item margin-top-20">
+    <div class="navbar-nav ml-auto">
+      <div class="nav-item margin-top-20">
         <button data-toggle="modal" data-target="#sign_up_modal" class="btn nav-buttn">Sign Up</button>
-      </li>
-      <li class="nav-item margin-top-20">
+      </div>
+      <div class="nav-item margin-top-20">
         <button data-toggle="modal" data-target="#login_modal" class="btn nav-buttn">Log in</button>
-      </li>
-    </ul>
+      </div>
+    </div>
     <% else %>
-      <span class="margin-top-20">
+      <div class="margin-top-20">
         <%= link_to "Profile", user_path(current_user), class: "btn" %>
-      </span>
-      <span class="margin-top-20">
+      </div>
+      <div class="margin-top-20">
         <%= link_to "Log Out", logout_path , class: "btn" %>
-      </span>
+      </div>
     <% end %>
 
   </nav>
