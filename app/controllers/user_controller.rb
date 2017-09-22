@@ -4,12 +4,17 @@ class UserController < ApplicationController
 
   # create user acc after user submit their info to form
   def create
-    @user = User.create(user_params)
-    if @user.save
-      login(@user)
-      redirect_to user_path(@user)
-    else
+    if User.find_by_email(user_params[:email])
+      flash[:error] = "User already exists, use a different email."
       redirect_to cities_path
+    else
+      @user = User.create(user_params)
+      if @user.save
+        login(@user)
+        redirect_to user_path(@user)
+      else
+        redirect_to new_user_path
+      end
     end
   end
 
