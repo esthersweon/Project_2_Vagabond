@@ -15,6 +15,7 @@
     <li>
       <h4><%= link_to user_post.title, post_path(user_post.id) %> </h4>
       <p><%= user_post.content %></p>
+
       <%= link_to image_tag('pencil-icon.png', class: "icon"), edit_post_path(user_post)%>
       <%= link_to image_tag('trash-can.png', class: "icon"), delete_post_path(user_post), data: {:confirm => "Are you sure you want to delete the #{user_post.title} post?"}, :method => :delete %>
     </li>

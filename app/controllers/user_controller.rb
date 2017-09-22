@@ -11,8 +11,10 @@ class UserController < ApplicationController
       @user = User.create(user_params)
       if @user.save
         login(@user)
+        flash[:notice] = "Welcome "+  @user.first_name + "!"
         redirect_to user_path(@user)
       else
+        flash[:error] = "Invalid info"
         redirect_to new_user_path
       end
     end
