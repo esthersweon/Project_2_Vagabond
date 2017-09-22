@@ -2,7 +2,9 @@
   <!-- Navbar content -->
 
   <h1 class="navbar-brand mb-0">Welcome to Vagabond.com</h1>
-
+  <div class="margin-top-20">
+    <%= link_to "Homepage", cities_path, class: "btn btn-primary" %>
+  </div>
   <div class="margin-top-20">
     <%= link_to "Profile", user_path(current_user), class: "btn btn-primary" %>
   </div>

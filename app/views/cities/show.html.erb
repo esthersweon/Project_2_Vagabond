@@ -1,17 +1,26 @@
+<!-- Top Nav Bar -->
 <nav class="navbar navbar-inverse bg-primary">
-  <!-- Navbar content -->
-
   <h1 class="navbar-brand mb-0">Welcome to Vagabond.com</h1>
-  <h1 class="navbar-brand mb-0"><%= @city.name %></h1>
+  <span> <%= @city.name %></span>
+  <span> <%= link_to "Homepage", cities_path, class: "btn btn-primary" %></span>
   <% if current_user%>
-  <ul class="navbar-nav ml-auto">
-    <li class="nav-item margin-top-20">
-      <button data-toggle="modal" data-target="#new_post_modal" class="btn btn-primary nav-buttn">New Post</button>
-    </li>
-  </ul>
+  <span><button data-toggle="modal" data-target="#new_post_modal" class="btn btn-primary nav-buttn">New Post</button></span>
+
   <% end %>
 </nav>
+
 <%= image_tag(@city.image) %>
+
+<!-- Display all posts related to this city -->
+<% @city.posts.order('id DESC').each do |post| %>
+<ul>
+<div>
+  <li>Author: <%= post.author %></li>
+  <li>Content: <%= post.content %></li>
+</div>
+</ul>
+<% end %>
+
 <!-- MODAL -->
 <div class="container-modal">
   <!-- New Post modal -->
@@ -19,9 +28,8 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <h4>New Post</h4>
-        <% @post= Post.new %>
-        <% @post.user_id = current_user.id %>
-        <%= form_for @post, url: create_post_path(@city.id), method: "post" do |f| %>
+
+        <%= form_for :post, url: create_post_path(@city.id), method: "post" do |f| %>
         <div class="modal-body">
           <div class="margin-top-20">
             <%= f.text_field :title, placeholder: "Title"%>

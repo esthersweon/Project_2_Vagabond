@@ -5,16 +5,16 @@ class PostController < ApplicationController
   end
 
   def create
+    # if the inputs are valid create a new record
+    # else we redirect them back to that city page with error
     @city = City.find_by_id(params[:city_id])
-    fail
-    @post = Post.new(:user_id current_user.id, :city_id @city.id, post_params)
-    @post = Post.create(post_params)
-
-    if @post.save
-      @city.posts << @post
+    if post_params.permitted?
+      author = current_user.first_name + " " + current_user.last_name
+      @post = Post.create(user_id: current_user.id, author: author, city_id: @city.id, title: post_params[:title], content: post_params[:content])
       redirect_to post_path(@post)
     else
-      redirect_to root_path
+      # redirect to main city mage for now
+      redirect_to cities_path
     end
   end
 
