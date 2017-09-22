@@ -9,6 +9,7 @@ class UserController < ApplicationController
       login(@user)
       redirect_to user_path(@user)
     else
+      flash[:error]
       redirect_to cities_path
     end
   end
