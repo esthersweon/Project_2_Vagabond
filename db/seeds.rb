@@ -19,29 +19,46 @@ user_data = []
     last_name: last,
     email: FFaker::Internet.email,
     current_city: FFaker::Address.city,
-    password: "1234"
+    password: "1234",
+    image: FFaker::Book.cover,
   }
 end
 users = User.create(user_data)
 
-# i = 0
-# random_post = []
-# 3.times do
-#   post_data << {
-#     title: FFaker::CheesyLingo.title,
-#     content: FFaker::CheesyLingo.sentence,
-#     author: (users[i].first_name + " " + users[i].last_name)
-#   }
-#   i = i +1
-# end
-# users[0].posts << random_post[0]
-# users[1].posts << random_post[1]
-# users[2].posts << random_post[2]
-# random_post = Post.create(post_data)
+city_data = [
+  {
+    name: "San Francisco",
+    image: "sf.jpg"
+  },
+  {
+    name: "London",
+    image: "london.jpg"
+  },
+  {
+    name: "Gibraltar",
+    image: "gibraltar.jpg"
+  },
+  {
+    name: "New York",
+    image: "ny.jpg"
+  },
+  {
+  name: "Atlanta",
+  image: "atlanta.jpg"
+  },
+]
+cities = City.create(city_data)
 
+ post_data = []
+ 9.times do
+   user = users.sample
+   post_data << {
+     title: FFaker::CheesyLingo.title,
+     content: FFaker::CheesyLingo.sentence,
+     user_id: user.id,
+     city_id: cities.sample.id,
+     author:user.first_name + " " + user.last_name
+   }
+ end
 
- City.create(name: "San Francisco", image: "sf.jpg")
- City.create(name: "London", image: "london.jpg")
- City.create(name: "Gibraltar", image: "gibraltar.jpg")
- City.create(name: "New York", image: "ny.jpg")
- City.create(name: "Atlanta", image: "atlanta.jpg")
+ random_post = Post.create(post_data)
