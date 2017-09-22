@@ -15,6 +15,7 @@
 <% @city.posts.order('id DESC').each do |post| %>
 <ul>
 <div>
+  <li><h4><%= link_to post.title, post_path(post) %></h4></li>
   <li>Author: <%= post.author %></li>
   <li>Content: <%= post.content %></li>
 </div>
