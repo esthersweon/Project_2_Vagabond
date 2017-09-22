@@ -11,11 +11,19 @@
  * It is generally better to create a new file per style scope.
  *
   */
- = require_tree .
- = require_self
 
+.dungeon{
+  padding: 10px 0px 75px 0px;
+  background-color: #FEFFF1;
+  text-align: center;
+
+}
+ul{
+  background-color: #FEFFF1;
+}
  body{
    font-family: 'Great Vibes', cursive;
+   background-color: #FEFFF1;
  }
 
 .logo{
@@ -64,8 +72,7 @@ li{
 
 .footer{
   bottom: 0;
-  position: relative;
-
+  position: fixed;
   width: 100%;
   font-family: ;
   background-color: #FEFFF1;
