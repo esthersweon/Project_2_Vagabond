@@ -25,3 +25,69 @@
 <% @cities.each do |city| %>
 <%= link_to image_tag(city.image), city_path(city.id) %>
 <%end%>
+
+<!-- MODAL -->
+  <div class="container-modal">
+    <!-- sign_up_modal -->
+    <div id="sign_up_modal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <%= form_for :user, url: create_user_path, method: "post" do |f| %>
+          <div class="modal-body">
+            <div class="margin-top-20">
+              <%= f.text_field :first_name, placeholder: "First Name"%>
+            </div>
+            <div class="margin-top-20">
+              <%= f.text_field :last_name, placeholder: "Last Name"%>
+            </div>
+            <div class="margin-top-20">
+              <%= f.email_field :email, placeholder: "Email"%>
+            </div>
+            <div class="margin-top-20">
+              <%= f.text_field :current_city, placeholder: "Current City"%>
+            </div>
+            <div class="margin-top-20">
+              <%= f.password_field :password, placeholder: "Password"%>
+            </div>
+          </div>
+
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= f.submit "Sign up!" %>
+          </div>
+          <% end %>
+
+       </div>
+      </div>
+    </div>
+    <!-- end of sign up modal -->
+  </div>
+  <!-- end of modal container-->
+
+ <!-- Login MODAL -->
+  <div class="container-modal">
+    <div id="login_modal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <% @user = User.new %>
+          <%= form_for @user, url: "/login", method: "get" do |f| %>
+          <div class="modal-body">
+            <div class="margin-top-20">
+              <%= f.email_field :email, placeholder: "Email"%>
+            </div>
+            <div class="margin-top-20">
+              <%= f.password_field :password, placeholder: "Password"%>
+            </div>
+          </div>
+
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= f.submit "Login" %>
+          </div>
+          <% end %>
+
+       </div>
+      </div>
+    </div>
+  </div>
+<!-- end of login modal -->

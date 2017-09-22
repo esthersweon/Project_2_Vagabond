@@ -23,22 +23,23 @@ user_data = []
   }
 end
 users = User.create(user_data)
-i = 0
-post_data = []
-3.times do
-  post_data << {
-    title: FFaker::CheesyLingo.title,
-    content: FFaker::CheesyLingo.sentence,
-    author: (users[i].first_name + " " + users[i].last_name)
-  }
-  i = i +1
-end
-city_data = []
+
+# i = 0
+# random_post = []
+# 3.times do
+#   post_data << {
+#     title: FFaker::CheesyLingo.title,
+#     content: FFaker::CheesyLingo.sentence,
+#     author: (users[i].first_name + " " + users[i].last_name)
+#   }
+#   i = i +1
+# end
+# users[0].posts << random_post[0]
+# users[1].posts << random_post[1]
+# users[2].posts << random_post[2]
+# random_post = Post.create(post_data)
+
+
  City.create(name: "San Francisco", image: "sf.jpg")
  City.create(name: "New York", image: "ny.jpg")
  City.create(name: "Atlanta", image: "atlanta.jpg")
-random_post = Post.create(post_data)
-
-users[0].posts << random_post[0]
-users[1].posts << random_post[1]
-users[2].posts << random_post[2]
