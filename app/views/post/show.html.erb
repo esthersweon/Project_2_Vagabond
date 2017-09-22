@@ -1,11 +1,12 @@
-
 <h2><%= @post.title %></h2>
 <p>Author: <%= @post.author %></p>
 <p>Content: <%= @post.content %></p>
-<% if current_user.id == @post.user_id %>
-  <p>
-    <%= link_to image_tag('pencil-icon.png', class: "icon"), edit_post_path(@post) %>
-    <%= link_to image_tag('trash-can.png', class: "icon"), delete_post_path(@post), data: {:confirm => "Are you sure you want to delete the #{@post.title} post?"}, :method => :delete %>
-  </p>
-<% end %>
 
+<% if @current_user != nil  %>
+  <% if @current_user.id == @post.user_id %>
+    <p>
+      <%= link_to image_tag('pencil-icon.png', class: "icon"), edit_post_path(@post) %>
+      <%= link_to image_tag('trash-can.png', class: "icon"), delete_post_path(@post), data: {:confirm => "Are you sure you want to delete the #{@post.title} post?"}, :method => :delete %>
+    </p>
+  <% end %>
+<% end %>

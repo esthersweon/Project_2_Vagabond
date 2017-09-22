@@ -1,14 +1,14 @@
 <!-- show.html for User -->
-<div>
+<div class="dungeon">
   <p> Hello <%= @user.first_name + " " + @user.last_name %> </p>
-  <p>Date Joined: <%= @user.created_at %></p>
+  <p>Joined Vagabond <%= time_ago_in_words(@user.created_at) %> ago.</p>
   <p>Current City: <%= @user.current_city %></p>
   <div class="margin-top-20">
     <button data-toggle="modal" data-target="#edit_profile_modal" class="btn">Edit Profile</button>
   </div>
 </div>
 
-<div class="user_post">
+<div class="dungeon">
   <h2> Your Posts </h2>
   <ul>
     <% @user.posts.each do |user_post| %>
