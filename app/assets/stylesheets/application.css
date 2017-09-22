@@ -33,8 +33,20 @@
 }
 a{
   max-width: auto;
-
+  color:Pink
 }
+a:visited, a:hover, a:active {
+  color: white;
+}
+a[href]{
+  color: blue;
+}
+
+.btn:visited, .btn:hover, .btn:hover{
+  color:white;
+  cursor: pointer;
+}
+
 img{
   height: 600px;
   width: 100%;
@@ -70,4 +82,8 @@ li{
   position: absolute;
   color: red;
   font-size: 25px;
+}
+body{
+  margin-bottom: 200px
+
 }
