@@ -19,6 +19,11 @@
   <nav id="main_nav" class="navbar navbar-inverse">
     <!-- Navbar content -->
     <a href="/cities"><%= image_tag('logo.png', class: "logo", alt: "Logo") %></a>
+    <div class="error">
+      <% flash.each do |name, msg| %>
+        <div><%= msg %></div>
+      <% end %>
+    </div>
     <% if current_user == nil %>
     <div class="navbar-nav ml-auto">
       <div class="nav-item margin-top-20">
