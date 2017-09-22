@@ -65,15 +65,15 @@
             <div class="modal-body">
               <h2>Sign Up Here!</h2>
               <div class="margin-top-20">
-                First Name: <%= f.text_field :first_name, placeholder: "First Name"%>
+                First Name: <%= f.text_field :first_name, placeholder: "First Name", required: true%>
               </div>
               <br>
               <div class="margin-top-20">
-                Last Name: <%= f.text_field :last_name, placeholder: "Last Name"%>
+                Last Name: <%= f.text_field :last_name, placeholder: "Last Name", required: true%>
               </div>
               <br>
               <div class="margin-top-20">
-                Email: <%= f.email_field :email, placeholder: "Email"%>
+                Email: <%= f.email_field :email, placeholder: "Email", required: true%>
               </div>
               <br>
               <div class="margin-top-20">
@@ -81,7 +81,7 @@
               </div>
               <br>
               <div class="margin-top-20">
-                Password: <%= f.password_field :password, placeholder: "Password"%>
+                Password: <%= f.password_field :password, placeholder: "Password", required: true%>
               </div>
             </div>
 
