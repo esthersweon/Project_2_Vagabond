@@ -1,10 +1,10 @@
 <!-- Top Nav Bar -->
-<nav class="navbar navbar-inverse bg-primary">
-  <h1 class="navbar-brand mb-0">Welcome to Vagabond.com</h1>
+<nav class="navbar navbar-inverse">
+  <%= image_tag('logo.png', class: "logo") %>
   <span> <%= @city.name %></span>
-  <span> <%= link_to "Homepage", cities_path, class: "btn btn-primary" %></span>
+  <span> <%= link_to "Homepage", cities_path, class: "btn" %></span>
   <% if current_user%>
-  <span><button data-toggle="modal" data-target="#new_post_modal" class="btn btn-primary nav-buttn">New Post</button></span>
+  <span><button data-toggle="modal" data-target="#new_post_modal" class="btn nav-buttn">New Post</button></span>
 
   <% end %>
 </nav>
