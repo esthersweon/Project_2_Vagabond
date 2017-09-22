@@ -1,26 +1,10 @@
 <!-- show.html for User -->
-
-<nav class="navbar navbar-inverse bg-primary">
-  <!-- Navbar content -->
-
-  <h1 class="navbar-brand mb-0">Welcome to Vagabond.com</h1>
-  <div class="margin-top-20">
-    <%= link_to "Homepage", cities_path, class: "btn btn-primary" %>
-  </div>
-  <div class="margin-top-20">
-    <%= link_to "Profile", user_path(current_user), class: "btn btn-primary" %>
-  </div>
-  <div class="margin-top-20">
-    <%= link_to "Log Out", logout_path , class: "btn btn-primary" %>
-  </div>
-</nav>
-
 <div>
   <p> Hello <%= @user.first_name + " " + @user.last_name %> </p>
   <p>Date Joined: <%= @user.created_at %></p>
   <p>Current City: <%= @user.current_city %></p>
   <div class="margin-top-20">
-    <button data-toggle="modal" data-target="#edit_profile_modal" class="btn btn-primary">Edit Profile</button>
+    <button data-toggle="modal" data-target="#edit_profile_modal" class="btn">Edit Profile</button>
   </div>
 </div>
 
@@ -58,12 +42,15 @@
           <%= f.text_field :current_city, placeholder: "Current City"%>
         </div>
         <div class="margin-top-20">
+          <%= f.file_field :image, placeholder: "image"%>
+        </div>
+        <div class="margin-top-20">
           <%= f.password_field :password, placeholder: "Password"%>
         </div>
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn" data-dismiss="modal">Close</button>
         <%= f.submit "Submit Changes" %>
       </div>
       <% end %>

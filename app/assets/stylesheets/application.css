@@ -18,8 +18,32 @@
   float: right;
 
  }
+ body{
+   font-family: 'Great Vibes', cursive;
+ }
 
+.logo{
+  width: 15%;
+  height: 15%;
 
+}
+.navbar-brand{
+  display: inline-block;
+}
+
+.navbar{
+  background-color: #FEFFF1;
+}
+.btn{
+  color: white;
+  background-color: #FD18FD;
+}
+a{
+  display: inline;
+}
+.inline-block{
+  display: inline-block;
+}
 
  img{
    height: 600px;
@@ -33,10 +57,11 @@
  .footer{
    bottom: 0;
    position: relative;
+
    width: 100%;
    font-family: ;
-   background-color: #007bff;
-   color: white;
+   background-color: #FEFFF1;
+   color: #FD18FD;
    text-align: center;
    padding: 20px;
  }

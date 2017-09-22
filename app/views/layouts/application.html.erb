@@ -6,6 +6,7 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
@@ -14,6 +15,29 @@
 
 <body>
 
+  <!-- Navbar top -->
+  <nav id="main_nav" class="navbar navbar-inverse">
+    <!-- Navbar content -->
+    <% if current_user == nil %>
+    <ul class="navbar-nav ml-auto">
+      <%= link_to image_tag('logo.png', class: "logo inline-block"), cities_path %>
+      <li class="nav-item margin-top-20">
+        <button data-toggle="modal" data-target="#sign_up_modal" class="btn nav-buttn">Sign Up</button>
+      </li>
+      <li class="nav-item margin-top-20">
+        <button data-toggle="modal" data-target="#login_modal" class="btn nav-buttn">Log in</button>
+      </li>
+    </ul>
+    <% else %>
+      <span class="margin-top-20">
+        <%= link_to "Profile", user_path(current_user), class: "btn" %>
+      </span>
+      <span class="margin-top-20">
+        <%= link_to "Log Out", logout_path , class: "btn" %>
+      </span>
+    <% end %>
+
+  </nav>
 
 
   <!-- MODAL -->
@@ -21,7 +45,83 @@
   <%= yield %>
 
   <div class="footer">
-    <h2>&copy;javascriptforlife & Huan Ming Liao & Jonathan Mules</h2>
+    <h2>&copy;Princess Adventures LLC</h2>
   </div>
+
+  <!-- Signup/login modal -->
+
+  <!-- MODAL -->
+    <div class="container-modal">
+      <!-- sign_up_modal -->
+      <div id="sign_up_modal" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <%= form_for :user, url: create_user_path, method: "post" do |f| %>
+            <div class="modal-body">
+              <h2>Sign Up Here!</h2>
+              <div class="margin-top-20">
+                First Name: <%= f.text_field :first_name, placeholder: "First Name"%>
+              </div>
+              <br>
+              <div class="margin-top-20">
+                Last Name: <%= f.text_field :last_name, placeholder: "Last Name"%>
+              </div>
+              <br>
+              <div class="margin-top-20">
+                Email: <%= f.email_field :email, placeholder: "Email"%>
+              </div>
+              <br>
+              <div class="margin-top-20">
+                Current City: <%= f.text_field :current_city, placeholder: "Current City"%>
+              </div>
+              <br>
+              <div class="margin-top-20">
+                Password: <%= f.password_field :password, placeholder: "Password"%>
+              </div>
+            </div>
+
+           <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <%= f.submit "Sign up!" %>
+            </div>
+            <% end %>
+
+         </div>
+        </div>
+      </div>
+      <!-- end of sign up modal -->
+    </div>
+    <!-- end of modal container-->
+
+
+     <!-- Login MODAL -->
+      <div class="container-modal">
+        <div id="login_modal" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <% @user = User.new %>
+              <%= form_for @user, url: "/login", method: "get" do |f| %>
+              <div class="modal-body">
+                <div class="margin-top-20">
+                  <%= f.email_field :email, placeholder: "Email"%>
+                </div>
+                <div class="margin-top-20">
+                  <%= f.password_field :password, placeholder: "Password"%>
+                </div>
+              </div>
+
+             <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <%= f.submit "Login" %>
+              </div>
+              <% end %>
+
+           </div>
+          </div>
+        </div>
+      </div>
+    <!-- end of login modal -->
+
+
 </body>
 </html>
