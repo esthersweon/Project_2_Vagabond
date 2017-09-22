@@ -11,7 +11,11 @@
  * It is generally better to create a new file per style scope.
  *
   */
-
+.dungeon_two{
+  padding: 150px 0px 300px 0px;
+  background-color: #FEFFF1;
+  text-align: center;
+}
 .dungeon{
   padding: 10px 0px 75px 0px;
   background-color: #FEFFF1;
@@ -35,12 +39,7 @@ ul{
   background-color: #FEFFF1;
   display: inline-flex;
 }
-.navbar span{
-  font-family: 'Great Vibes';
-  color: #FD18FD;
-  text-align: center;
-  font-size: 30px;
-}
+
 .btn{
   color: white;
   background-color: #FD18FD;
