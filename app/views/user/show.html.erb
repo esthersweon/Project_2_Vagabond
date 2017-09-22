@@ -1,20 +1,21 @@
 <!-- show.html for User -->
-<div>
+<div class="dungeon">
   <p> Hello <%= @user.first_name + " " + @user.last_name %> </p>
-  <p>Date Joined: <%= @user.created_at %></p>
+  <p>Joined Vagabond <%= time_ago_in_words(@user.created_at) %> ago.</p>
   <p>Current City: <%= @user.current_city %></p>
   <div class="margin-top-20">
     <button data-toggle="modal" data-target="#edit_profile_modal" class="btn">Edit Profile</button>
   </div>
 </div>
 
-<div class="user_post">
+<div class="dungeon">
   <h2> Your Posts </h2>
   <ul>
     <% @user.posts.each do |user_post| %>
     <li>
       <h4><%= link_to user_post.title, post_path(user_post.id) %> </h4>
       <p><%= user_post.content %></p>
+
       <%= link_to image_tag('pencil-icon.png', class: "icon"), edit_post_path(user_post)%>
       <%= link_to image_tag('trash-can.png', class: "icon"), delete_post_path(user_post), data: {:confirm => "Are you sure you want to delete the #{user_post.title} post?"}, :method => :delete %>
     </li>

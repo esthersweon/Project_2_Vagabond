@@ -11,6 +11,7 @@ class SessionController < ApplicationController
       login(@user)
       redirect_to @user
     else
+      flash[:error] = "Invalid Credential"
       redirect_to cities_path
     end
   end

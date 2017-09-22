@@ -1,5 +1,5 @@
-<%= form_for @post do |f| %>
-<h2><%= f.text_field :title %></h2>
+<%= form_for @post, html:{class: "post"} do |f| %>
+<h2>Title: <%= f.text_field :title %></h2>
 <p><%= f.text_area :content %></p>
 <%= f.submit %>
 <% end %>

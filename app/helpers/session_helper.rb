@@ -13,6 +13,7 @@ module SessionHelper
 
   def logout
     @current_user = session[:user_id] = nil
+    flash[:notice] = "You have successfully logged out."
     redirect_to cities_path
   end
 

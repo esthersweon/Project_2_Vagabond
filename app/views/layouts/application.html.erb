@@ -49,11 +49,12 @@
 
   </nav>
 
-
+ 
   <!-- MODAL -->
 
   <%= yield %>
-
+  <div class="container">
+ </div>
   <div class="footer">
     <h2>&copy;Princess Adventures LLC</h2>
   </div>
@@ -91,8 +92,8 @@
             </div>
 
            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <%= f.submit "Sign up!" %>
+              <button type="button" class="btn" data-dismiss="modal">Close</button>
+              <%= f.submit "Sign up!", class: "btn" %>
             </div>
             <% end %>
 
@@ -121,8 +122,8 @@
               </div>
 
              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <%= f.submit "Login" %>
+                <button type="button" class="btn" data-dismiss="modal">Close</button>
+                <%= f.submit "Login", class: "btn"%>
               </div>
               <% end %>
 
@@ -132,6 +133,6 @@
       </div>
     <!-- end of login modal -->
 
-
+</div>
 </body>
 </html>
