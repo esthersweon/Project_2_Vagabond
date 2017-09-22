@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # new display form html page for creating new profile
   get "/user/new", to: "user#new", as: "new_user"
   # creating and insert into db
-  post "/user", to: "user#create", as: "create_user"
+  post "/user/new", to: "user#create", as: "create_user"
   # get -> showing individual profile
   get "/user/:user_id", to: "user#show", as: "user"
   get "/user/:user_id/edit", to: "user#edit", as: "edit_user"
