@@ -41,5 +41,7 @@ users = User.create(user_data)
 
 
  City.create(name: "San Francisco", image: "sf.jpg")
+ City.create(name: "London", image: "london.jpg")
+ City.create(name: "Gibraltar", image: "gibraltar.jpg")
  City.create(name: "New York", image: "ny.jpg")
  City.create(name: "Atlanta", image: "atlanta.jpg")
