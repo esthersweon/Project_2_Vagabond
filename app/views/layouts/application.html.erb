@@ -18,9 +18,9 @@
   <!-- Navbar top -->
   <nav id="main_nav" class="navbar navbar-inverse">
     <!-- Navbar content -->
+      <%= link_to image_tag('logo.png', class: "logo inline-block"), cities_path %>
     <% if current_user == nil %>
     <ul class="navbar-nav ml-auto">
-      <%= link_to image_tag('logo.png', class: "logo inline-block"), cities_path %>
       <li class="nav-item margin-top-20">
         <button data-toggle="modal" data-target="#sign_up_modal" class="btn nav-buttn">Sign Up</button>
       </li>
