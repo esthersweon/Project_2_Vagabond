@@ -18,13 +18,21 @@
   float: right;
 
  }
+
+
+
  img{
    height: 600px;
    width: 100%;
  }
+ .icon{
+ height: 20px;
+ width: 20px;
+ }
 
  .footer{
    bottom: 0;
+   position: relative;
    width: 100%;
    font-family: ;
    background-color: #007bff;

@@ -1,3 +1,5 @@
+<!-- show.html for User -->
+
 <nav class="navbar navbar-inverse bg-primary">
   <!-- Navbar content -->
 
@@ -11,61 +13,64 @@
   <div class="margin-top-20">
     <%= link_to "Log Out", logout_path , class: "btn btn-primary" %>
   </div>
-
 </nav>
-  <div>
-    <p> Hello <%= @user.first_name + " " + @user.last_name %> </p>
-    <p>Date Joined: <%= @user.created_at %></p>
-    <p>Current City: <%= @user.current_city %></p>
-  </div>
 
+<div>
+  <p> Hello <%= @user.first_name + " " + @user.last_name %> </p>
+  <p>Date Joined: <%= @user.created_at %></p>
+  <p>Current City: <%= @user.current_city %></p>
+  <div class="margin-top-20">
+    <button data-toggle="modal" data-target="#edit_profile_modal" class="btn btn-primary">Edit Profile</button>
+  </div>
+</div>
+
+<div class="user_post">
   <h2> Your Posts </h2>
   <ul>
     <% @user.posts.each do |user_post| %>
     <li>
-
       <h4><%= link_to user_post.title, post_path(user_post.id) %> </h4>
+      <p><%= user_post.content %></p>
+      <%= link_to image_tag('pencil-icon.png', class: "icon"), edit_post_path(user_post)%>
+      <%= link_to image_tag('trash-can.png', class: "icon"), delete_post_path(user_post), data: {:confirm => "Are you sure you want to delete the #{user_post.title} post?"}, :method => :delete %>
     </li>
     <% end %>
   </ul>
+</div>
 
-  <!-- Edit Profile Modal -->
 
-  <div class="container-modal">
-    <!-- Add Playlist Modal -->
-    <div class="margin-top-20">
-      <button data-toggle="modal" data-target="#edit_modal" class="btn btn-primary">Edit Profile</button>
-    </div>
-    <div id="edit_modal" class="modal fade">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <%= form_for @user do |f| %>
-          <div class="modal-body">
-            <div class="margin-top-20">
-              <%= f.text_field :first_name, placeholder: "First Name"%>
-            </div>
-            <div class="margin-top-20">
-              <%= f.text_field :last_name, placeholder: "Last Name"%>
-            </div>
-            <div class="margin-top-20">
-              <%= f.email_field :email, placeholder: "Email"%>
-            </div>
-            <div class="margin-top-20">
-              <%= f.text_field :current_city, placeholder: "Current City"%>
-            </div>
-            <div class="margin-top-20">
-              <%= f.password_field :password, placeholder: "Password"%>
-            </div>
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <%= f.submit "Submit Changes" %>
-          </div>
-          <% end %>
-
+<!-- Modal for edit user post -->
+<div id="edit_profile_modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= form_for @user do |f| %>
+      <div class="modal-body">
+        <div class="margin-top-20">
+          <%= f.text_field :first_name, placeholder: "First Name"%>
+        </div>
+        <div class="margin-top-20">
+          <%= f.text_field :last_name, placeholder: "Last Name"%>
+        </div>
+        <div class="margin-top-20">
+          <%= f.email_field :email, placeholder: "Email"%>
+        </div>
+        <div class="margin-top-20">
+          <%= f.text_field :current_city, placeholder: "Current City"%>
+        </div>
+        <div class="margin-top-20">
+          <%= f.password_field :password, placeholder: "Password"%>
         </div>
       </div>
-    </div>
 
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        <%= f.submit "Submit Changes" %>
+      </div>
+      <% end %>
+
+    </div>
   </div>
+</div>
+
+
+<!-- End of container-modal -->

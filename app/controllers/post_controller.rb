@@ -18,6 +18,25 @@ class PostController < ApplicationController
     end
   end
 
+  def edit
+    @post = Post.find_by_id(params[:post_id])
+  end
+
+  # update post from form
+  def update
+    @post = Post.find_by_id(params[:post_id])
+    @post.update_attributes(post_params)
+    redirect_to post_path(@post)
+  end
+
+  # delete post
+  def destroy
+    post = Post.find_by_id(params[:post_id])
+    post.destroy
+    redirect_to user_path(current_user)
+
+  end
+
   private
 
   def post_params
