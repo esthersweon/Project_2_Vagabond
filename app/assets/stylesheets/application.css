@@ -35,6 +35,12 @@ ul{
   background-color: #FEFFF1;
   display: inline-flex;
 }
+.navbar span{
+  font-family: 'Great Vibes';
+  color: #FD18FD;
+  text-align: center;
+  font-size: 30px;
+}
 .btn{
   color: white;
   background-color: #FD18FD;
@@ -74,12 +80,13 @@ li{
   bottom: 0;
   position: fixed;
   width: 100%;
-  font-family: ;
+  font-family: 'Great Vibes';
   background-color: #FEFFF1;
   color: #FD18FD;
   text-align: center;
   padding: 20px;
 }
+
 .error{
   max-width: 50%;
   z-index: 100;
