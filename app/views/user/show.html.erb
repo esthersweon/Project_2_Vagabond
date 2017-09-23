@@ -1,6 +1,6 @@
 <!-- show.html for User -->
 <div class="dungeon">
-  <p> Hello <%= @user.first_name + " " + @user.last_name %> </p>
+  <p><%= @user.first_name + " " + @user.last_name %> </p>
   <p>Joined Vagabond <%= time_ago_in_words(@user.created_at) %> ago.</p>
   <p>Current City: <%= @user.current_city %></p>
   <div class="margin-top-20">

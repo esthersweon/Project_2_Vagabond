@@ -10,7 +10,7 @@ class SessionController < ApplicationController
     @user = User.confirm(user_params)
     if @user
       login(@user)
-      flash[:notice] = "Welcome "+  @user.first_name + "!"
+      flash[:notice] = "Hello "+  @user.first_name + "!"
       redirect_to @user
     else
       flash[:error] = "Invalid Credential"
