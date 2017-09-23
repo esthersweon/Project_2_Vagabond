@@ -29,6 +29,10 @@ class UserController < ApplicationController
   def update
     @user = User.find_by_id(session[:user_id])
     @user.update_attributes(user_params)
+    if !@user.valid?
+      hash_msg = @user.errors.messages
+      flash[:error] = hash_msg.to_s.gsub(/=>/,' ').gsub!(/[^0-9A-Za-z. ,]/, '')
+    end
     redirect_to user_path(@user)
   end
 
