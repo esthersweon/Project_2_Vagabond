@@ -47,17 +47,17 @@ ul{
   background-color: #FD18FD;
   margin: 0 5px 0 5px;
 }
-.post_btn{
-  justify-content: flex-end !important;
+#post_btn{
 }
 a{
   color:Pink
 }
-a:visited, a:hover, a:active {
+a, a:hover, a:active {
   color: white;
 }
-a[href]{
-  color: blue;
+textarea{
+  width: 280px;
+  height: 200px;
 }
 
 .btn:visited, .btn:hover, .btn:hover{
@@ -66,6 +66,12 @@ a[href]{
 }
 .nav-element{
   display: inline-block;
+}
+#dropdownMenuLink{
+  color:white;
+}
+.dropdown-item{
+  color: black;
 }
 
 img{

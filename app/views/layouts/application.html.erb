@@ -31,20 +31,45 @@
         <div><%= msg %></div>
         <% end %>
       </div>
+      <!-- User can add post if they have logged in -->
+      <% if current_user && @at_city_page != nil %>
+        <div class= "nav-element">
+        <span><button data-toggle="modal" data-target="#new_post_modal" class="btn" id="post_btn">New Post</button></span>
+        </div>
+      <% end %>
+      <!-- Drop Down Menu for Cities -->
+      <div class="nav-element">
+        <div class="dropdown show">
+          <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Cities
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <%= link_to "San Francisco", city_path(4), class:"dropdown-item"%>
+            <%= link_to "London", city_path(5), class:"dropdown-item"%>
+            <%= link_to "Gibraltar", city_path(6), class:"dropdown-item"%>
+            <%= link_to "New York", city_path(7), class:"dropdown-item"%>
+            <%= link_to "Atlanta", city_path(8), class:"dropdown-item"%>
+          </div>
+        </div>
+      </div>
+      <!-- End of dropdown for cities -->
+
+      <!-- If user is null display signup or login  -->
       <% if current_user == nil %>
-      <div class="nav-element">
-        <button data-toggle="modal" data-target="#sign_up_modal" class="btn nav-buttn">Sign Up</button>
-      </div>
-      <div class="nav-element">
-        <button data-toggle="modal" data-target="#login_modal" class="btn nav-buttn">Log in</button>
-      </div>
+          <div class="nav-element">
+            <button data-toggle="modal" data-target="#sign_up_modal" class="btn nav-buttn">Sign Up</button>
+          </div>
+          <div class="nav-element">
+            <button data-toggle="modal" data-target="#login_modal" class="btn nav-buttn">Log in</button>
+          </div>
+      <!-- Else he can see his profile or logout -->
       <% else %>
-      <div class="nav-element">
-        <%= link_to "Profile", user_path(current_user), class: "btn" %>
-      </div>
-      <div class="nav-element">
-        <%= link_to "Log Out", logout_path , class: "btn" %>
-      </div>
+          <div class="nav-element">
+            <%= link_to "Profile", user_path(current_user), class: "btn" %>
+          </div>
+          <div class="nav-element">
+            <%= link_to "Log Out", logout_path , class: "btn" %>
+          </div>
       <% end %>
 
     </nav>
@@ -56,7 +81,7 @@
     <div class="container">
     </div>
     <div class="footer">
-      <h2>&copy;Princess Adventures LLC</h2>
+      <h2>&copy; Princess Adventures LLC</h2>
     </div>
 
     <!-- Signup/login modal -->

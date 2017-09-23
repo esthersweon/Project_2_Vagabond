@@ -10,5 +10,6 @@ class CitiesController < ApplicationController
   # show specific city and user/posts associate with it
   def show
     @city = City.find(params[:city_id])
+    @at_city_page = true
   end
 end
