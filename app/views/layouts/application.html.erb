@@ -20,118 +20,143 @@
 
 <body>
   <div class= "bg">
-  <!-- Navbar top -->
-  <nav id="main_nav" class="navbar navbar-inverse">
-    <!-- Navbar content -->
-    <a href="/cities"><%= image_tag('logo.png', class: "logo", alt: "Logo") %></a>
-    <div class="error">
-      <% flash.each do |name, msg| %>
-      <div><%= msg %></div>
-      <% end %>
-    </div>
-    <% if current_user == nil %>
-    <div class="navbar-nav ml-auto">
-      <div class="nav-item margin-top-20">
+    <!-- Navbar top -->
+    <nav id="main_nav" class="navbar navbar-inverse" style="">
+      <!-- Navbar content -->
+      <div class="nav-element">
+        <a href="/cities"><%= image_tag('logo.png', class: "logo", alt: "Logo") %></a>
+      </div>
+      <div class="error">
+        <% flash.each do |name, msg| %>
+        <div><%= msg %></div>
+        <% end %>
+      </div>
+      <% if current_user == nil %>
+      <div class="nav-element">
         <button data-toggle="modal" data-target="#sign_up_modal" class="btn nav-buttn">Sign Up</button>
       </div>
-      <div class="nav-item margin-top-20">
+      <div class="nav-element">
         <button data-toggle="modal" data-target="#login_modal" class="btn nav-buttn">Log in</button>
       </div>
+      <% else %>
+      <div class="nav-element">
+        <%= link_to "Profile", user_path(current_user), class: "btn" %>
+      </div>
+      <div class="nav-element">
+        <%= link_to "Log Out", logout_path , class: "btn" %>
+      </div>
+      <% end %>
+
+    </nav>
+
+
+    <!-- MODAL -->
+
+    <%= yield %>
+    <div class="container">
     </div>
-    <% else %>
-    <div class="margin-top-20">
-      <%= link_to "Profile", user_path(current_user), class: "btn" %>
+    <div class="footer">
+      <h2>&copy;Princess Adventures LLC</h2>
     </div>
-    <div class="margin-top-20">
-      <%= link_to "Log Out", logout_path , class: "btn" %>
-    </div>
-    <% end %>
 
-  </nav>
+    <!-- Signup/login modal -->
 
-
-  <!-- MODAL -->
-
-  <%= yield %>
-  <div class="container">
-  </div>
-  <div class="footer">
-    <h2>&copy;Princess Adventures LLC</h2>
-  </div>
-
-  <!-- Signup/login modal -->
-
-  <!-- MODAL -->
-  <div class="container-modal">
-    <!-- sign_up_modal -->
-    <div id="sign_up_modal" class="modal fade">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <%= form_for :user, url: create_user_path, method: "post" do |f| %>
-          <div class="modal-body">
-            <h2>Sign Up Here!</h2>
-            <div class="margin-top-20">
-              First Name: <%= f.text_field :first_name, placeholder: "First Name", required: true%>
+    <!-- MODAL -->
+    <div class="container-modal">
+      <!-- sign_up_modal -->
+      <div id="sign_up_modal" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <%= form_for :user, url: create_user_path, method: "post" do |f| %>
+            <div class="modal-body">
+              <h2>Sign Up Here!</h2>
+              <div class="margin-top-20 row">
+                <div class="col">
+                  First Name:
+                </div>
+                <div class="col">
+                  <%= f.text_field :first_name, placeholder: "First Name", required: true%>
+                </div>
+              </div>
+              <br>
+              <div class="margin-top-20 row">
+                <div class="col">
+                  Last Name:
+                </div>
+                <div class="col">
+                  <%= f.text_field :last_name, placeholder: "Last Name", required: true%>
+                </div>
+              </div>
+              <br>
+              <div class="margin-top-20 row">
+                <div class="col">
+                  Email:
+                </div>
+                <div class="col">
+                  <%= f.email_field :email, placeholder: "Email", required: true%>
+                </div>
+              </div>
+              <br>
+              <div class="margin-top-20 row">
+                <div class="col">
+                  Current City:
+                </div>
+                <div class="col">
+                  <%= f.text_field :current_city, placeholder: "Current City"%>
+                </div>
+              </div>
+              <br>
+              <div class="margin-top-20 row">
+                <div class="col">
+                  Password:
+                </div>
+                <div class="col">
+                  <%= f.password_field :password, placeholder: "Password", required: true%>
+                </div>
+              </div>
             </div>
-            <br>
-            <div class="margin-top-20">
-              Last Name: <%= f.text_field :last_name, placeholder: "Last Name", required: true%>
+
+            <div class="modal-footer">
+              <button type="button" class="btn" data-dismiss="modal">Close</button>
+              <%= f.submit "Sign up!", class: "btn" %>
             </div>
-            <br>
-            <div class="margin-top-20">
-              Email: <%= f.email_field :email, placeholder: "Email", required: true%>
-            </div>
-            <br>
-            <div class="margin-top-20">
-              Current City: <%= f.text_field :current_city, placeholder: "Current City"%>
-            </div>
-            <br>
-            <div class="margin-top-20">
-              Password: <%= f.password_field :password, placeholder: "Password", required: true%>
-            </div>
+            <% end %>
+
           </div>
+        </div>
+      </div>
+      <!-- end of sign up modal -->
+    </div>
+    <!-- end of modal container-->
 
-          <div class="modal-footer">
-            <button type="button" class="btn" data-dismiss="modal">Close</button>
-            <%= f.submit "Sign up!", class: "btn" %>
+
+    <!-- Login MODAL -->
+    <div class="container-modal">
+      <div id="login_modal" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <% @user = User.new %>
+            <%= form_for @user, url: "/login", method: "get" do |f| %>
+            <div class="modal-body">
+              <div class="margin-top-20">
+                <%= f.email_field :email, placeholder: "Email"%>
+              </div>
+              <div class="margin-top-20">
+                <%= f.password_field :password, placeholder: "Password"%>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn" data-dismiss="modal">Close</button>
+              <%= f.submit "Login", class: "btn"%>
+            </div>
+            <% end %>
+
           </div>
-          <% end %>
-
         </div>
       </div>
     </div>
-    <!-- end of sign up modal -->
-  </div>
-  <!-- end of modal container-->
-
-
-  <!-- Login MODAL -->
-  <div class="container-modal">
-    <div id="login_modal" class="modal fade">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <% @user = User.new %>
-          <%= form_for @user, url: "/login", method: "get" do |f| %>
-          <div class="modal-body">
-            <div class="margin-top-20">
-              <%= f.email_field :email, placeholder: "Email"%>
-            </div>
-            <div class="margin-top-20">
-              <%= f.password_field :password, placeholder: "Password"%>
-            </div>
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn" data-dismiss="modal">Close</button>
-            <%= f.submit "Login", class: "btn"%>
-          </div>
-          <% end %>
-
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- end of login modal -->
+    <!-- end of login modal -->
 
   </div>
 </body>

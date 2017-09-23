@@ -1,7 +1,7 @@
 <!-- Top Nav Bar -->
 <nav class="navbar navbar-inverse">
   <% if current_user%>
-  <span><button data-toggle="modal" data-target="#new_post_modal" class="btn nav-buttn">New Post</button></span>
+  <span><button data-toggle="modal" data-target="#new_post_modal" class="btn nav-buttn post_btn">New Post</button></span>
   <% end %>
 </nav>
 
@@ -38,8 +38,8 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <%= f.submit "Submit Post" %>
+          <button type="button" class="btn" data-dismiss="modal">Close</button>
+          <%= f.submit "Submit Post", class:"btn"%>
         </div>
         <% end %>
 

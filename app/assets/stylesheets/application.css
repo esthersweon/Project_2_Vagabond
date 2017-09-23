@@ -24,31 +24,33 @@
 }
 ul{
   background-color: #FEFFF1;
-}
- body{
-   font-family: 'Great Vibes', cursive;
-   background-color: #FEFFF1;
- }
-ul{
   padding: 0
 }
 
 .logo{
-  width: 15%;
-  height: 15%;
+  position: sticky;
+  width: 20%;
+  height: 20%;
 
 }
 .navbar{
   background-color: #FEFFF1;
-  display: inline-flex;
+  display: flex;
+  padding-bottom: 10px  !important;
+
+  flex-wrap: nowrap !important;
+  justify-content: flex-end !important;
 }
 
 .btn{
   color: white;
   background-color: #FD18FD;
+  margin: 0 5px 0 5px;
+}
+.post_btn{
+  justify-content: flex-end !important;
 }
 a{
-  max-width: auto;
   color:Pink
 }
 a:visited, a:hover, a:active {
@@ -61,6 +63,9 @@ a[href]{
 .btn:visited, .btn:hover, .btn:hover{
   color:white;
   cursor: pointer;
+}
+.nav-element{
+  display: inline-block;
 }
 
 img{
@@ -101,14 +106,22 @@ li{
 }
 body{
   margin-bottom: 200px
-
 }
+
+
 .modal-dialog{
   width: fit-content;
 }
-.modal-dialog>.modal-footer{
-  text-align: center !important;
+.modal-footer{
+  display: inline-block !important;
 }
 .modal-content {
   text-align: center;
+}
+.modal-body input{
+  width: 200px;
+  margin: 5px;
+}
+.row{
+  margin-right: 20px !important;
 }
