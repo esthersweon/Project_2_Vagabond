@@ -29,6 +29,9 @@ ul{
    font-family: 'Great Vibes', cursive;
    background-color: #FEFFF1;
  }
+ul{
+  padding: 0
+}
 
 .logo{
   width: 15%;

@@ -32,6 +32,9 @@ class PostController < ApplicationController
   def update
     @post = Post.find_by_id(params[:post_id])
     @post.update_attributes(post_params)
+    if !@post.valid?
+      flash[:error] = "Title must be between 1 to 200 characters and post must not be empty."
+    end
     redirect_to post_path(@post)
   end
 
