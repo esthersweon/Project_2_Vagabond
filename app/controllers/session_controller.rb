@@ -4,11 +4,13 @@ class SessionController < ApplicationController
     @user = User.new
   end
 
+  # GET /login
   def create
     user_params = params.require(:user).permit(:email, :password)
     @user = User.confirm(user_params)
     if @user
       login(@user)
+      flash[:notice] = "Hello "+  @user.first_name + "!"
       redirect_to @user
     else
       flash[:error] = "Invalid Credential"

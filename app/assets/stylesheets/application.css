@@ -12,7 +12,7 @@
  *
   */
 .dungeon_two{
-  padding: 150px 0px 300px 0px;
+  padding: 20px 0px 300px 0px;
   background-color: #FEFFF1;
   text-align: center;
 }
@@ -24,40 +24,54 @@
 }
 ul{
   background-color: #FEFFF1;
+  padding: 0
 }
- body{
-   font-family: 'Great Vibes', cursive;
-   background-color: #FEFFF1;
- }
 
 .logo{
-  width: 15%;
-  height: 15%;
+  position: sticky;
+  width: 20%;
+  height: 20%;
 
 }
 .navbar{
   background-color: #FEFFF1;
-  display: inline-flex;
+  display: flex;
+  padding-bottom: 10px  !important;
+
+  flex-wrap: nowrap !important;
+  justify-content: flex-end !important;
 }
 
 .btn{
   color: white;
   background-color: #FD18FD;
+  margin: 0 5px 0 5px;
+}
+#post_btn{
 }
 a{
-  max-width: auto;
   color:Pink
 }
-a:visited, a:hover, a:active {
+a, a:hover, a:active {
   color: white;
 }
-a[href]{
-  color: blue;
+textarea{
+  width: 280px;
+  height: 200px;
 }
 
 .btn:visited, .btn:hover, .btn:hover{
   color:white;
   cursor: pointer;
+}
+.nav-element{
+  display: inline-block;
+}
+#dropdownMenuLink{
+  color:white;
+}
+.dropdown-item{
+  color: black;
 }
 
 img{
@@ -77,7 +91,7 @@ li{
 
 .footer{
   bottom: 0;
-  position: fixed;
+  position: relative;
   width: 100%;
   font-family: 'Great Vibes';
   background-color: #FEFFF1;
@@ -87,16 +101,33 @@ li{
 }
 
 .error{
-  max-width: 50%;
+  max-width: 40%;
   z-index: 100;
-  top: 30px;
+  top: 10px;
   text-align: center;
   left: 20%;
   position: absolute;
   color: red;
-  font-size: 25px;
+  font-size: 20px;
 }
 body{
   margin-bottom: 200px
+}
 
+
+.modal-dialog{
+  width: fit-content;
+}
+.modal-footer{
+  display: inline-block !important;
+}
+.modal-content {
+  text-align: center;
+}
+.modal-body input{
+  width: 200px;
+  margin: 5px;
+}
+.row{
+  margin-right: 20px !important;
 }

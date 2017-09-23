@@ -1,6 +1,6 @@
 <!-- show.html for User -->
 <div class="dungeon">
-  <p> Hello <%= @user.first_name + " " + @user.last_name %> </p>
+  <p><%= @user.first_name + " " + @user.last_name %> </p>
   <p>Joined Vagabond <%= time_ago_in_words(@user.created_at) %> ago.</p>
   <p>Current City: <%= @user.current_city %></p>
   <div class="margin-top-20">
@@ -42,9 +42,7 @@
         <div class="margin-top-20">
           <%= f.text_field :current_city, placeholder: "Current City"%>
         </div>
-        <div class="margin-top-20">
-          <%= f.file_field :image, placeholder: "image"%>
-        </div>
+
         <div class="margin-top-20">
           <%= f.password_field :password, placeholder: "Password"%>
         </div>

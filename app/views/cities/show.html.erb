@@ -1,9 +1,7 @@
 <!-- Top Nav Bar -->
-<nav class="navbar navbar-inverse">
-  <% if current_user%>
-  <span><button data-toggle="modal" data-target="#new_post_modal" class="btn nav-buttn">New Post</button></span>
-  <% end %>
-</nav>
+
+
+
 
 
 <%= image_tag(@city.image) %>
@@ -14,7 +12,7 @@
 <ul>
   <li><h4><%= link_to post.title, post_path(post) %></h4></li>
   <li>Author: <%= post.author %></li>
-  <li>Content: <%= post.content %></li>
+  <li><%= post.content %></li>
 </ul>
 </div>
 <% end %>
@@ -38,8 +36,8 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <%= f.submit "Submit Post" %>
+          <button type="button" class="btn" data-dismiss="modal">Close</button>
+          <%= f.submit "Submit Post", class:"btn"%>
         </div>
         <% end %>
 
