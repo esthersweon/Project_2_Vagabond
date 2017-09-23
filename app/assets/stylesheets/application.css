@@ -91,7 +91,7 @@ li{
 
 .footer{
   bottom: 0;
-  position: fixed;
+  position: relative;
   width: 100%;
   font-family: 'Great Vibes';
   background-color: #FEFFF1;
@@ -101,14 +101,14 @@ li{
 }
 
 .error{
-  max-width: 50%;
+  max-width: 40%;
   z-index: 100;
-  top: 30px;
+  top: 10px;
   text-align: center;
   left: 20%;
   position: absolute;
   color: red;
-  font-size: 25px;
+  font-size: 20px;
 }
 body{
   margin-bottom: 200px
