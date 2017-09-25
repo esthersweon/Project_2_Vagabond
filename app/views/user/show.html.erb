@@ -20,7 +20,7 @@
   <ul>
     <% @user.posts.each do |user_post| %>
     <li>
-      <h4><%= link_to user_post.title, post_path(user_post.id) %> </h4>
+      <h4 class="post_title"><%= link_to user_post.title, post_path(user_post.id) %> </h4>
       <div class= "post_content">
         <p><%= truncate(user_post.content, length: 500) %></p>
         <p>You wrote this <%= time_ago_in_words(user_post.created_at) %> ago.</p>

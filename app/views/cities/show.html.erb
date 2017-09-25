@@ -9,14 +9,14 @@
 <!-- Display all posts related to this city -->
 <% @city.posts.order('id DESC').each do |post| %>
 <div class="dungeon">
-<ul>
-  <li><h4><%= link_to post.title, post_path(post) %></h4></li>
-  <li>Writen by <%= post.author %> <%= time_ago_in_words(post.created_at) %> ago.</li>
-  <div class= "post_content">
-  <li><%= truncate(post.content, length: 500) %></li>
-</div>
-</ul>
-<hr>
+  <ul>
+    <li><h4 class="post_title"><%= link_to post.title, post_path(post) %></h4></li>
+    <li>Writen by <%= post.author %> <%= time_ago_in_words(post.created_at) %> ago.</li>
+    <div class= "post_content">
+    <li><%= truncate(post.content, length: 500) %></li>
+  </div>
+  </ul>
+  <hr>
 </div>
 <% end %>
 
