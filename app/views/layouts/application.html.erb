@@ -43,12 +43,14 @@
           <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Cities
           </a>
+          <% cities = City.all %>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <%= link_to "San Francisco", city_path(4), class:"dropdown-item"%>
-            <%= link_to "London", city_path(5), class:"dropdown-item"%>
-            <%= link_to "Gibraltar", city_path(6), class:"dropdown-item"%>
-            <%= link_to "New York", city_path(7), class:"dropdown-item"%>
-            <%= link_to "Atlanta", city_path(8), class:"dropdown-item"%>
+
+            <%= link_to "San Francisco", city_path(cities[0]), class:"dropdown-item"%>
+            <%= link_to "London", city_path(cities[1]), class:"dropdown-item"%>
+            <%= link_to "Gibraltar", city_path(cities[2]), class:"dropdown-item"%>
+            <%= link_to "New York", city_path(cities[3]), class:"dropdown-item"%>
+            <%= link_to "Atlanta", city_path(cities[4]), class:"dropdown-item"%>
           </div>
         </div>
       </div>
