@@ -31,7 +31,7 @@ class UserController < ApplicationController
     @user.update_attributes(user_params)
     if !@user.valid?
       hash_msg = @user.errors.messages
-      flash[:error] = "Sorry, " + hash_msg.to_s.gsub(/=>/,' ').gsub!(/[^0-9A-Za-z. ,]/, '')
+      flash[:error] = "Sorry, " + hash_msg.to_s.gsub(/=>/,' ').gsub(/'/,'no').gsub!(/[^0-9A-Za-z. ,]/, ' ')
     end
     redirect_to user_path(@user)
   end
