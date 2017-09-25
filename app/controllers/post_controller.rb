@@ -26,6 +26,9 @@ class PostController < ApplicationController
 
   def edit
     @post = Post.find_by_id(params[:post_id])
+    if current_user.id != @post.user_id
+      redirect_to post_path(@post)
+    end
   end
 
   # update post from form
