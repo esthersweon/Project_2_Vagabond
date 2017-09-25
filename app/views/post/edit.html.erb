@@ -1,7 +1,8 @@
+<!-- indentation! -->
 <div class="dungeon_two">
-<%= form_for @post, html:{class: "post"} do |f| %>
-<h2>Title: <%= f.text_field :title %></h2>
-<p><%= f.text_area :content %></p>
-<%= f.submit class: "btn" %>
-<% end %>
+  <%= form_for @post, html:{class: "post"} do |f| %>
+    <h2>Title: <%= f.text_field :title %></h2>
+    <p><%= f.text_area :content %></p>
+    <%= f.submit class: "btn" %>
+  <% end %>
 </div>

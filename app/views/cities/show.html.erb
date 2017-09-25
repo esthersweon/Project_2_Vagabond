@@ -1,23 +1,20 @@
-<!-- Top Nav Bar -->
-
-
-
-
+<!-- This template could be broken out into partials -->
+<!-- A good way to break up would be a partial for New post modal -->
+<!-- That way, you don't need as many comments in your code -->
 
 <%= image_tag(@city.image) %>
 
-<!-- Display all posts related to this city -->
 <% @city.posts.order('id DESC').each do |post| %>
-<div class="dungeon">
-  <ul>
-    <li><h4 class="post_title"><%= link_to post.title, post_path(post) %></h4></li>
-    <li>Writen by <%= post.author %> <%= time_ago_in_words(post.created_at) %> ago.</li>
-    <div class= "post_content">
-    <li><%= truncate(post.content, length: 500) %></li>
+  <div class="dungeon">
+    <ul>
+      <li><h4 class="post_title"><%= link_to post.title, post_path(post) %></h4></li>
+      <li>Writen by <%= post.author %> <%= time_ago_in_words(post.created_at) %> ago.</li>
+      <div class= "post_content">
+      <li><%= truncate(post.content, length: 500) %></li>
+    </div>
+    </ul>
+    <hr>
   </div>
-  </ul>
-  <hr>
-</div>
 <% end %>
 
 <!-- MODAL -->

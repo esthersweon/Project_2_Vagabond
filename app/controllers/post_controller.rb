@@ -6,20 +6,23 @@ class PostController < ApplicationController
   end
 
   def create
-    # if the inputs are valid create a new record
-    # else we redirect them back to that city page with error
     @city = City.find_by_id(params[:city_id])
+
     if post_params.permitted?
       author = current_user.first_name + " " + current_user.last_name
+
+      # IMPORTANT:
+      # You should not need to write all these params out
+      # You should include user_id and city_id in your post_params method at the bottom of this file,
+      # and create hidden fields for user_id and city_id in your create post form.
       @post = Post.create(user_id: current_user.id, author: author, city_id: @city.id, title: post_params[:title], content: post_params[:content])
-      if !@post.id.nil?
+      if @post.id
         redirect_to post_path(@post)
       else
         flash[:error] = "Title must be between 1 to 200 characters and post must not be empty."
         redirect_to city_path(@city)
       end
     else
-      # redirect to main city mage for now
       redirect_to cities_path
     end
   end
@@ -31,7 +34,6 @@ class PostController < ApplicationController
     end
   end
 
-  # update post from form
   def update
     @post = Post.find_by_id(params[:post_id])
     @post.update_attributes(post_params)
@@ -41,18 +43,16 @@ class PostController < ApplicationController
     redirect_to post_path(@post)
   end
 
-  # delete post
   def destroy
     post = Post.find_by_id(params[:post_id])
     post.destroy
     redirect_to user_path(current_user)
-
   end
 
   private
 
   def post_params
-    p = params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content)
   end
 
 end
