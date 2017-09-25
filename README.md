@@ -23,6 +23,6 @@ Hello, welcome to Vagabond @ Pricess Adventure LLC. This is one of the web devel
 * Bcrypt
 
 ## Credits
-Erick Recher
-Jonathan Mules
-Huan Ming Liao
+Erick Recher  
+Jonathan Mules  
+Huan Ming Liao  
