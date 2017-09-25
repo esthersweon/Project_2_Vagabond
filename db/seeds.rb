@@ -20,7 +20,7 @@ user_data = []
     email: FFaker::Internet.email,
     current_city: FFaker::Address.city,
     password: "1234",
-    image: FFaker::Book.cover,
+    image: "https://robohash.org/" + rand(500).to_s + "?set=set4",
   }
 end
 users = User.create(user_data)
