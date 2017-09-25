@@ -50,11 +50,11 @@ city_data = [
 cities = City.create(city_data)
 
  post_data = []
- 9.times do
+ 20.times do
    user = users.sample
    post_data << {
      title: FFaker::CheesyLingo.title,
-     content: FFaker::CheesyLingo.sentence,
+     content: FFaker::DizzleIpsum.paragraph,
      user_id: user.id,
      city_id: cities.sample.id,
      author:user.first_name + " " + user.last_name
