@@ -14,48 +14,71 @@
 </head>
 
 <body>
-
-  <!-- Navbar top -->
-  <nav id="main_nav" class="navbar navbar-inverse">
-    <!-- Navbar content -->
-    <a href="/cities"><%= image_tag('logo.png', class: "logo", alt: "Logo") %></a>
-    <div class="error">
-      <% flash.each do |name, msg| %>
+  <div class= "bg">
+    <!-- Navbar top -->
+    <nav id="main_nav" class="navbar navbar-inverse">
+      <!-- Navbar content -->
+      <a href="/cities"><%= image_tag('logo.png', class: "logo", alt: "Logo") %></a>
+      <div class="error">
+        <% flash.each do |name, msg| %>
         <div><%= msg %></div>
-      <% end %>
-    </div>
-    <% if current_user == nil %>
-    <div class="navbar-nav ml-auto">
-      <div class="nav-item margin-top-20">
-        <button data-toggle="modal" data-target="#sign_up_modal" class="btn nav-buttn">Sign Up</button>
+        <% end %>
       </div>
-      <div class="nav-item margin-top-20">
+      <!-- User can add post if they have logged in -->
+      <% if current_user && @at_city_page != nil %>
+      <div class= "nav-element">
+        <span><button data-toggle="modal" data-target="#new_post_modal" class="btn" id="post_btn">New Post</button></span>
+      </div>
+      <% end %>
+
+    <!-- Drop Down Menu for Cities -->
+    <div class="nav-element">
+      <div class="dropdown show">
+        <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Cities
+        </a>
+        <% cities = City.all %>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+          <%= link_to "San Francisco", city_path(cities[0]), class:"dropdown-item"%>
+          <%= link_to "London", city_path(cities[1]), class:"dropdown-item"%>
+          <%= link_to "Gibraltar", city_path(cities[2]), class:"dropdown-item"%>
+          <%= link_to "New York", city_path(cities[3]), class:"dropdown-item"%>
+          <%= link_to "Atlanta", city_path(cities[4]), class:"dropdown-item"%>
+        </div>
+      </div>
+      </div>
+      <% if current_user == nil %>
+      <div class="nav-element">
+          <button data-toggle="modal" data-target="#sign_up_modal" class="btn nav-buttn">Sign Up</button>
+      </div>
+      <div class="nav-element">
         <button data-toggle="modal" data-target="#login_modal" class="btn nav-buttn">Log in</button>
       </div>
-    </div>
-    <% else %>
+
+      <% else %>
       <div class="margin-top-20">
         <%= link_to "Profile", user_path(current_user), class: "btn" %>
       </div>
       <div class="margin-top-20">
         <%= link_to "Log Out", logout_path , class: "btn" %>
       </div>
-    <% end %>
+      <% end %>
 
-  </nav>
+    </nav>
 
 
-  <!-- MODAL -->
+    <!-- MODAL -->
 
-  <%= yield %>
+    <%= yield %>
 
-  <div class="footer">
-    <h2>&copy;Princess Adventures LLC</h2>
-  </div>
+    <div class="footer">
+      <h2>&copy;Princess Adventures LLC</h2>
+    </div>
 
-  <!-- Signup/login modal -->
+    <!-- Signup/login modal -->
 
-  <!-- MODAL -->
+    <!-- MODAL -->
     <div class="container-modal">
       <!-- sign_up_modal -->
       <div id="sign_up_modal" class="modal fade">
@@ -85,13 +108,13 @@
               </div>
             </div>
 
-           <div class="modal-footer">
+            <div class="modal-footer">
               <button type="button" class="btn" data-dismiss="modal">Close</button>
               <%= f.submit "Sign up!", class: "btn" %>
             </div>
             <% end %>
 
-         </div>
+          </div>
         </div>
       </div>
       <!-- end of sign up modal -->
@@ -99,34 +122,34 @@
     <!-- end of modal container-->
 
 
-     <!-- Login MODAL -->
-      <div class="container-modal">
-        <div id="login_modal" class="modal fade">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <% @user = User.new %>
-              <%= form_for @user, url: "/login", method: "get" do |f| %>
-              <div class="modal-body">
-                <div class="margin-top-20">
-                  <%= f.email_field :email, placeholder: "Email"%>
-                </div>
-                <div class="margin-top-20">
-                  <%= f.password_field :password, placeholder: "Password"%>
-                </div>
+    <!-- Login MODAL -->
+    <div class="container-modal">
+      <div id="login_modal" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <% @user = User.new %>
+            <%= form_for @user, url: "/login", method: "get" do |f| %>
+            <div class="modal-body">
+              <div class="margin-top-20">
+                <%= f.email_field :email, placeholder: "Email"%>
               </div>
-
-             <div class="modal-footer">
-                <button type="button" class="btn" data-dismiss="modal">Close</button>
-                <%= f.submit "Login", class: "btn"%>
+              <div class="margin-top-20">
+                <%= f.password_field :password, placeholder: "Password"%>
               </div>
-              <% end %>
+            </div>
 
-           </div>
+            <div class="modal-footer">
+              <button type="button" class="btn" data-dismiss="modal">Close</button>
+              <%= f.submit "Login", class: "btn"%>
+            </div>
+            <% end %>
+
           </div>
         </div>
       </div>
+    </div>
     <!-- end of login modal -->
 
-</div>
+  </div>
 </body>
 </html>
