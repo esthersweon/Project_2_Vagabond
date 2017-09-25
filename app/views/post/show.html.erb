@@ -1,7 +1,9 @@
 <div class="dungeon_two">
 <h2><%= @post.title %></h2>
 <p>Author: <%= @post.author %></p>
+<div class="post_content">
 <p><%= @post.content %></p>
+</div>
 <% if @current_user != nil  %>
   <% if @current_user.id == @post.user_id %>
     <p>
