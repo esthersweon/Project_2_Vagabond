@@ -1,5 +1,12 @@
 <!-- show.html for User -->
 <div class="dungeon">
+  <div class= "profile_img">
+    <%= if @user.image == nil
+      image_tag('http://weclipart.com/gimg/DE3DE279C8E11C7C/dc6o8deoi.jpeg')
+    else
+      image_tag(@user.image)
+    end %>
+  </div>
   <p><%= @user.first_name + " " + @user.last_name %> </p>
   <p>Joined Vagabond <%= time_ago_in_words(@user.created_at) %> ago.</p>
   <p>Current City: <%= @user.current_city %></p>
@@ -43,12 +50,14 @@
         <div class="margin-top-20">
           <%= f.text_field :current_city, placeholder: "Current City"%>
         </div>
-
+        <div class="margin-top-20">
+          <%= f.text_field :image, placeholder: "Image Url"%>
+        </div>
         <div class="margin-top-20">
           <%= f.password_field :password, placeholder: "Password"%>
         </div>
       </div>
-      
+
       <div class="modal-footer">
         <button type="button" class="btn" data-dismiss="modal">Close</button>
         <%= f.submit "Submit Changes", class: "btn"%>
