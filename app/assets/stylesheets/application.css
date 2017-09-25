@@ -90,9 +90,9 @@ li{
 }
 
 .footer{
-  bottom: 0;
-  position: relative;
   width: 100%;
+  position: absolute;
+  bottom: 0;
   font-family: 'Great Vibes';
   background-color: #FEFFF1;
   color: #FD18FD;
@@ -111,7 +111,10 @@ li{
   font-size: 20px;
 }
 body{
-  margin-bottom: 200px
+  margin-bottom: 200px;
+  min-height: 100vh; /*100% of viewport*/
+  position: relative;
+  background-color: #FEFFF1;
 }
 
 
